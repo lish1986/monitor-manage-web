@@ -67,6 +67,18 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/car',
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'Cars',
+        component: () => import('@/views/car/list'),
+        meta: { title: '车辆查询', icon: 'car' }
+      }
+    ]
+  },
 
   {
     path: '/example',

@@ -72,7 +72,7 @@ const programs = Mock.mock([{
   }
 ])
 
-const programDetail = Mock.mock({
+const programDetailInfo = Mock.mock({
   id: '001',
   programName: '上海达申汽车服务有限公司',
   totalCars: 100,
@@ -83,6 +83,42 @@ const programDetail = Mock.mock({
   otherMembers: 20,
   devices: 20,
   lines: 3
+})
+
+const carInfoDatas = Mock.mock([{
+  id: '100',
+  carName: '1号车辆',
+  line: '1号路线',
+  status: '运行中',
+  operation: '自动'
+},{
+  id: '200',
+  carName: '2号车辆',
+  line: '2号路线',
+  status: '已停止',
+  operation: '人工'
+},{
+  id: '300',
+  carName: '3号车辆',
+  line: '3号路线',
+  status: '已损坏',
+  operation: '人工'
+},{
+  id: '400',
+  carName: '4号车辆',
+  line: '1号路线',
+  status: '运行中',
+  operation: '自动'
+}])
+
+const carDetailInfo = Mock.mock({
+  id: "100",
+  carName: "1号车辆",
+  distance: "500公里",
+  gas: "20升",
+  programs: "5",
+  time: "4800小时",
+  output: "100%"
 })
 
 module.exports = [{
@@ -104,8 +140,31 @@ module.exports = [{
     return {
       code: 20000,
       data: {
-        items: programDetail
+        items: programDetailInfo
       }
     }
   }
-}]
+},{
+  url: '/backend/car/list',
+  type: 'get',
+  response: config => {
+    return {
+      code: 20000,
+      data: {
+        items: carInfoDatas
+      }
+    }
+  }
+},{
+  url: '/backend/car/detail',
+  type: 'get',
+  response: config => {
+    return {
+      code: 20000,
+      data: {
+        items: carDetailInfo
+      }
+    }
+  }
+}
+]
