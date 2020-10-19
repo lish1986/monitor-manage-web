@@ -61,12 +61,12 @@
         @current-change="handleCurrentChange"
       />
     </div>
-    <!-- 作业弹出框 -->
+    <!-- 作业详情弹出框 -->
     <el-dialog :title="'作业详情'" :visible.sync="dialogVisible" width="65%">
       <el-form :model="detailData" disabled>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="编号" :label-width="labelWidth">
+            <el-form-item label="作业编号" :label-width="labelWidth">
               <el-input v-model="detailData.id" />
             </el-form-item>
           </el-col>
@@ -182,7 +182,7 @@ export default {
     // 查看施工作业详情
     handleView(id) {
       programAPI
-        .getProgramDetail(id)
+        .getProgramDetails(id)
         .then(response => {
           this.detailData = response.data.items;
           this.dialogVisible = true;
